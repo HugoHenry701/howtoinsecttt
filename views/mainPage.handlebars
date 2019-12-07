@@ -1,0 +1,136 @@
+<nav class="nav">
+    <a class="nav-link active">Main page</a>
+    <a class="nav-link" href="http://localhost:2000/manage">ManagePage</a>
+</nav>
+<div class="main">
+    <div class="selection">
+        <h3>Kind</h3>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="guitar">
+                <span class="checkmark">guitar</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="drum">
+                <span class="checkmark">drum</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="bass">
+                <span class="checkmark">bass</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="organ">
+                <span class="checkmark">organ</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="accessory">
+                <span class="checkmark">acces</span>
+            </label>
+        </div>
+
+
+    </div>
+    <div id="products" class="products">
+        {{{HTML}}}
+    </div>
+
+
+</div>
+<div id="shopping-bag" class="shopping">
+    <span id="bag-button" class="bag"></span>
+    <div class="scroll">
+        <div class="shopping-header">
+            <span class="bag-header"></span>
+            <span class="title-header">Cart</span>
+        </div>
+        <div class="shopping-container">
+            <p class="empty-container">Hello! It's empty here</p>
+
+        </div>
+        <div class="shopping-footer">
+            <div class="SUBTOTAL">
+                SUBTOTAL
+            </div>
+            <div class="price">
+                <p>$ 0.00</p>
+            </div>
+
+            <div class="footer-buybtn">
+                Mua ne
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('click', '#bag-button', function () {
+        $("#bag-button").replaceWith("<div id='close-button' class='close-btn'>X</div>")
+        $("#shopping-bag").css("right", "0")
+    })
+    $(document).on('click', '#close-button', function () {
+        $("#shopping-bag").css("right", "-450px")
+        $("#close-button").replaceWith("<span id='bag-button' class='bag'></span>")
+    });
+
+    $(document).ready(function () {
+        let searchData = []
+        $(":checkbox").change(function () {
+            if (this.checked == true) {
+                searchData.push(this.value)
+                alert(searchData)
+            } else {
+                for (let i = 0; i < searchData.length; i++) {
+                    if (searchData[i] == this.value) {
+                        searchData.splice(i, 1)
+                        alert(searchData)
+                    }
+                }
+            }
+            $("#products .item").filter(function () {
+                $(this).toggle($(this).children("span").text().toUpperCase().indexOf(searchData) > -1)
+            })
+        })
+
+        $(document).on("click", ".item", function () {
+            let imgLink = $(this).children('img').attr('src')
+            let namee = $(this).children("p").text()
+            let price = $(this).children(".price").children("b").text()
+            $(".empty-container").remove()
+            $(".shopping-container").append(`
+                 <div class="shopping-item">
+                    <div class="item-img">
+                        <img src="${imgLink}" alt="">
+
+                    </div>
+                    <div class="item-details">
+                      <p>${namee}</p>
+                    </div>
+                    <div class="item-price">
+                        <p>$ ${price}</p>
+                    <div>
+                        <button class="change-product-btn">-</button>
+                        <button class="change-product-btn">+</button>
+                    </div>
+                    </div>
+                </div>
+            `)
+
+        })
+
+
+
+
+    })
+
+
+
+
+</script>

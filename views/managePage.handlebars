@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/libs/css/bootstrap.min.css">
+<nav class="nav">
+    <a class="nav-link active">Manage page</a>
+    <a class="nav-link" href="http://localhost:2000">MainPage</a>
+</nav>
+<br>
+<div class="d-flex justify-content-around">
+    <form action="/manage/create-product" method="GET">
+        <button class="btn btn-success" type="submit">CREATE</button>
+    </form>
+
+    <form action="/manage/read-product" method="GET">
+        <button class="btn btn-info" type="submit">READ</button>
+    </form>
+
+    <form action="/manage/update-product" method="GET">
+        <button class="btn btn-dark" type="submit">UPDATE</button>
+    </form>
+
+    <form action="/manage/delete-product" method="GET">
+        <button class="btn btn-danger" type="submit">DELETE</button>
+    </form>
+</div>
+    {{!-- {{{htmlContent}}} --}}
+    {{!-- for each  --}}
+    {{#each data}}
+    {{#if @first}}
+    <p>danh sach mat hang</p>
+    {{/if}}
+    <p>{{@index}}</p>
+    <p>{{namee}}</p>
+    {{/each}}
