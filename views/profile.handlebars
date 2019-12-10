@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/libs/css/bootstrap.min.css">
+
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="nav-item nav-link active">HomePage</a>
+    <div>
+        <ul class="nav nav-pills">
+              {{#if user}}
+            <li class="nav-item"> <a class="nav-item nav-link" href="/auth/logout">Logout</a>
+            </li>
+            {{else}}
+            <li class="nav-item"> <a class="nav-item nav-link" href="/auth/login">Login(chua lam xong dau)</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+<header>
+    <h1>Welcome to your profile,{{user}}</h1>
+</header>
+<main>
+    <p>
+        extra information about you
+    </p>
+</main>

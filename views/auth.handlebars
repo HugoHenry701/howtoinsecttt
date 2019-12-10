@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/libs/css/bootstrap.min.css">
+
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="nav-item nav-link active">HomePage</a>
+    <div>
+        <ul class="nav nav-pills">
+            {{#if user}}
+            <li class="nav-item"> <a class="nav-item nav-link" href="/auth/logout">Logout</a>
+            </li>
+            {{else}}
+            <li class="nav-item"> <a class="nav-item nav-link" href="/auth/login">Login(chua lam xong dau)</a>
+            </li>
+            {{/if}}
+            <li class="nav-iteam"><a class="nav-item nav-link" href="/profile">Profile</a></li>
+        </ul>
+    </div>
+</nav>
+<div>
+    {{#if user}}
+    <button><a href="/auth/logout">Logout Google account</a></button>
+    {{else}}
+    <header>
+        <h1>Login using...</h1>
+    </header>
+    <main>
+        <button type="button" class="btn btn-danger"><a class="google-btn" href="/auth/google">Google+</a></button>
+    </main>
+    {{/if}}
+</div>

@@ -26,7 +26,8 @@ Router.get("/", async (req, res) => {
     `;
   });
   res.render("mainPage", {
-    HTML: renderHTML
+    HTML: renderHTML,
+    user: req.user
   });
 });
 

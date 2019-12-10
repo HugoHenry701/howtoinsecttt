@@ -19,5 +19,5 @@ let productSchema = new mongoose.Schema(
         timestamps: true
     }
 );
-let productModel = mongoose.model("products", productSchema)
+let productModel = mongoose.model("HieuHuu", productSchema)
 module.exports = productModel;
