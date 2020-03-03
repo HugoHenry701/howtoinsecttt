@@ -31,7 +31,7 @@ passport.use(new googleStrategy({
     User.findOne({ googleID: profile.id }).then((currentUser) => {
         if (currentUser) {
             //already have the user
-            console.log('user is:', currentUser)
+            // console.log('user is:', currentUser)
             done(null, currentUser)
         } else {
             //if not creat user in our db
@@ -39,7 +39,7 @@ passport.use(new googleStrategy({
             new User({
                 userName: profile.displayName,
                 googleID: profile.id,
-                thumbnail: profile._json.picture.url
+                thumbnail: profile.photos[0].value,
             }).save().then((newUser) => {
                 console.log('new user created:' + newUser)
                 done(null, newUser)

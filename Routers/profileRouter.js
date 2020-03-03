@@ -11,7 +11,7 @@ const autoCheck = (req, res, next) => {
 }
 
 router.get('/', autoCheck, (req, res) => {
-    res.render('profile', { user: req.user.userName })
+    res.render('profile', { user: req.user.userName, imgLink: req.user.thumbnail, details: req.user.details })
 })
 
 module.exports = router

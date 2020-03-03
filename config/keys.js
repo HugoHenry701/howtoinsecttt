@@ -6,7 +6,7 @@ module.exports = {
         clientSecret: 'RzK4YqnSdE8RTHW5toWdSIaX'
     },
     mongodb:{
-        dbURL:'mongodb://admin:CodesePre02@codedidungso.me:27017/codese-pre-02'
+        dbURL:'mongodb://localhost:27017'
         
     },
     session:{
